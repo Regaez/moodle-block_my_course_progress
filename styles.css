@@ -1,8 +1,4 @@
-.block_my_course_progress {
-
-}
-
-.block_my_course_progress .content {
+.block.block_my_course_progress .content {
 	padding: 0;
 	margin-top: 2rem;
 }
