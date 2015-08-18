@@ -1,0 +1,93 @@
+.block_my_course_progress {
+
+}
+
+.block_my_course_progress .content {
+	padding: 0;
+	margin-top: 2rem;
+}
+
+.block_my_course_progress .grid__container {
+	overflow: hidden;
+}
+
+.block_my_course_progress .grid__container .grid__item{
+    display: block;
+    position: relative;
+}
+.block_my_course_progress .course {
+	min-height: 24rem;
+}
+
+.block_my_course_progress .course .course__title {
+	margin: 0.5rem 0;
+}
+
+.block_my_course_progress .course .course__image {
+	max-width: 100%;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+	.block_my_course_progress .grid__container .grid__item{
+	    float: left;
+		max-width: 48%;
+	    margin: 0 0.99%;
+	}
+
+	.block_my_course_progress .course .course__image {
+		width: 100%;
+		max-height: 150px;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+	
+	.block_my_course_progress .grid__container .grid__item{
+		max-width: 30%;
+	    margin: 0 1.49%;
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+	.block_my_course_progress .grid__container .grid__item{
+		max-width: 22%;
+	    margin: 0 1.49%;
+	}
+}
+
+.block_my_course_progress .progress__completion.status--completed {
+	text-align: center;
+    background-color: #319f1b;
+    color: #fff;
+    border-radius: 3px;
+    padding: 0.25rem;
+}
+
+.block_my_course_progress .progress__completion .progress__percent{
+	font-weight: bold;
+    margin-left: 1rem;
+}
+
+.block_my_course_progress .progress__bar {
+    position: relative;
+    height: 15px;
+    margin: 1rem 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    box-shadow: 0 0 5px rgba(0,0,0,0.15) inset;
+    border-radius: 3px;
+}
+
+.block_my_course_progress .progress__bar .progress__bar__fill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #319f1b;
+	box-shadow: 0 0 5px rgba(0,0,0,0.15) inset;
+}	
