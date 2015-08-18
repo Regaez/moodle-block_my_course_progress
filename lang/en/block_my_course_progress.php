@@ -11,6 +11,7 @@
 
 //plugin strings
 $string['pluginname'] = 'My Course Progress';
+$string['block_title'] = 'Courses';
 $string['my_course_progress:addinstance'] = 'Add a new course progress block';
 $string['my_course_progress:myaddinstance'] = 'Add a new course progress block to Dashboard';
 
@@ -24,3 +25,5 @@ $string['addgotocourselink_desc'] = 'Adds a link to the course underneath each d
 $string['hiddencoursecount'] = 'You have {$a} hidden course';
 $string['hiddencoursecountplural'] = 'You have {$a} hidden courses';
 $string['gotocourse'] = 'Go to course';
+$string['completion_label'] = 'Completion:';
+$string['completion_finished_label'] = 'Completed';

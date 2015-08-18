@@ -17,7 +17,7 @@ class block_my_course_progress extends block_base {
      * Block initialization
      */
     public function init() {
-        $this->title   = get_string('pluginname', 'block_my_course_progress');
+        $this->title   = get_string('block_title', 'block_my_course_progress');
     }
 
     /**
