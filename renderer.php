@@ -98,7 +98,7 @@ class block_my_course_progress_renderer extends plugin_renderer_base {
 			if( $percentage < 100) {
 				// OUTPUT PERCENTAGE LABEL
 				$html .= sprintf('<div class="progress__completion">%s <span class="progress__percent">%.0f%%</span></div>',
-					get_string('completion_label'),
+					get_string('completion_label', 'block_my_course_progress'),
 					$percentage
 				);
 
@@ -110,7 +110,7 @@ class block_my_course_progress_renderer extends plugin_renderer_base {
 			} else {
 				// OUTPUT COMPLETED LABEL
 				$html .= sprintf('<div class="progress__completion status--completed">%s</div>',
-					get_string('completion_finished_label')
+					get_string('completion_finished_label', 'block_my_course_progress')
 				);
 			}
 
