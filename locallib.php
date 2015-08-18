@@ -55,3 +55,41 @@ function block_my_course_progress_get_sorted_courses() {
     }
     return array($courses, $sitecourses, count($courses));
 }
+
+/**
+ * Return the completion stats for the given course
+ * @param  int      $courseid       the course id
+ * @return float                    completion percentage
+ */
+function block_my_course_progress_get_completion_percentage($courseid) {
+    global $USER, $DB;
+
+    // GET THE TOTAL NUMBER OF ACTIVITIES TO COMPLETE IN THE COURSE
+    $courseTotal = $DB->get_record_sql(
+        "SELECT COUNT(completion) as total
+        FROM {course_modules} cm
+        WHERE cm.completion = 1
+        AND cm.course = ?",
+        array($courseid)
+    );
+
+
+    // GET NUMBER OF ACTIVITIES COMPLETED BY THE USER
+    $userProgress = $DB->get_record_sql(
+        "SELECT COUNT(completionstate) as total
+        FROM {course_modules_completion} cmc, {course_modules} cm
+        WHERE cmc.coursemoduleid = cm.id
+        AND cmc.completionstate = 1
+        AND cm.course = ? 
+        AND cmc.userid = ?",
+        array($courseid, (int) $USER->id)
+    );
+
+
+    // RETURN THE PERCENTAGE OF COMPLETED ACTIVITIES
+    if( !!$courseTotal->total && !!$userProgress->total ) {     
+        return (float)( (int)$userProgress->total / (int)$courseTotal->total) * 100; 
+    }
+
+    return 0;
+}
