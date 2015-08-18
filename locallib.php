@@ -13,14 +13,12 @@
 /**
  * Return sorted list of user courses
  *
- * @param bool $showallcourses if set true all courses will be visible.
- * @return array list of sorted courses and count of courses.
+ * @return array                courses
  */
 function block_my_course_progress_get_sorted_courses() {
     global $USER;
 
-    $courses = enrol_get_my_course_progress();
-    $site = get_site();
+    $courses = enrol_get_my_courses();
 
     if (array_key_exists($site->id,$courses)) {
         unset($courses[$site->id]);
@@ -34,26 +32,7 @@ function block_my_course_progress_get_sorted_courses() {
         }
     }
 
-    // Get remote courses.
-    $remotecourses = array();
-    if (is_enabled_auth('mnet')) {
-        $remotecourses = get_my_remotecourses();
-    }
-    // Remote courses will have -ve remoteid as key, so it can be differentiated from normal courses
-    foreach ($remotecourses as $id => $val) {
-        $remoteid = $val->remoteid * -1;
-        $val->id = $remoteid;
-        $courses[$remoteid] = $val;
-    }
-
-    // From list extract site courses for overview
-    $sitecourses = array();
-    foreach ($courses as $key => $course) {
-        if ($course->id > 0) {
-            $sitecourses[$key] = $course;
-        }
-    }
-    return array($courses, $sitecourses, count($courses));
+    return $courses;
 }
 
 /**
