@@ -72,3 +72,32 @@ function block_my_course_progress_get_completion_percentage($courseid) {
 
     return 0;
 }
+
+
+/**
+ * Returns the url of the first image contained in the course summary file area
+ * @param  int $id the course id
+ * @return string     the url to the image
+ */
+function block_my_course_progress_get_course_image_url($id) {
+    global $CFG;
+    require_once $CFG->libdir . "/filelib.php";
+    $course = get_course($id);
+
+    if ($course instanceof stdClass) {
+        require_once $CFG->libdir . '/coursecatlib.php';
+        $course = new course_in_list($course);
+    }
+
+    foreach ($course->get_course_overviewfiles() as $file) {
+        $isimage = $file->is_valid_image();
+
+        if ($isimage) {
+            return file_encode_url("$CFG->wwwroot/pluginfile.php",
+                '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
+                $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
+        }
+    }
+
+    return false;
+}

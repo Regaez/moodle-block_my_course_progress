@@ -59,16 +59,15 @@ class block_my_course_progress_renderer extends plugin_renderer_base {
 	 * @return string     		HTML fragment
 	 */
 	function course($c) {
+		global $CFG;
+		require_once($CFG->dirroot.'/blocks/my_course_progress/locallib.php');
 
 		// OPEN COURSE WRAPPER
 		$html = sprintf('<div class="course">');
 			
-			// TODO: get course image url
-			$courseImageURL = '';
-
 			// OUTPUT COURSE IMAGE
 			$html .= sprintf('<img src="%s" class="course__image" alt="%s">',
-				$courseImageURL,
+				block_my_course_progress_get_course_image_url($c->id),
 				$c->shortname
 			);
 
