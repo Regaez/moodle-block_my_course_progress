@@ -12,10 +12,6 @@
 require_once($CFG->dirroot.'/blocks/my_course_progress/locallib.php');
 
 class block_my_course_progress extends block_base {
-    /**
-     * If this is passed as mynumber then showallcourses, irrespective of limit by user.
-     */
-    const SHOW_ALL_COURSES = -2;
 
     /**
      * Block initialization
@@ -30,8 +26,7 @@ class block_my_course_progress extends block_base {
      * @return stdClass contents of block
      */
     public function get_content() {
-        global $USER, $CFG, $DB;
-        require_once($CFG->dirroot.'/user/profile/lib.php');
+        global $CFG, $DB;
 
         if($this->content !== NULL) {
             return $this->content;
@@ -44,15 +39,14 @@ class block_my_course_progress extends block_base {
         $this->content->footer = '';
 
         $content = array();
-
-        list($sortedcourses, $sitecourses, $totalcourses) = block_my_course_progress_get_sorted_courses();
+        $sortedcourses = block_my_course_progress_get_sorted_courses();
 
         $renderer = $this->page->get_renderer('block_my_course_progress');
 
         if (empty($sortedcourses)) {
             $this->content->text .= get_string('nocourses','my');
         } else {
-            
+            $this->content->text = $renderer->course_grid($sortedcourses);
         }
 
         return $this->content;
@@ -73,7 +67,7 @@ class block_my_course_progress extends block_base {
      * @return array
      */
     public function applicable_formats() {
-        return array('my' => true);
+        return array('all' => true);
     }
 
     /**
