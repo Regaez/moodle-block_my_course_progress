@@ -25,18 +25,20 @@ class block_my_course_progress_renderer extends plugin_renderer_base {
 
 		// LOOP THROUGH EACH COURSE AND GET THE OUTPUT
 		foreach ($courses as $c) {
+
+			$course = get_course($c->id);
 			
 			// OPEN GRID ITEM
 			$html .= sprintf('<div class="grid__item">');
 
 				// RENDER THE COURSE DETAILS
-				$html .= $this->course($c);
+				$html .= $this->course($course);
 
 				// IF COURSE HAS COMPLETION STATS, DO
-				if ( !!$c->enablecompletion ) {
+				if ( !!$course->enablecompletion ) {
 
 					// TODO: GET COMPLETION PERCENTAGE
-					$percentage = block_my_course_progress_get_completion_percentage((int)$c->id);
+					$percentage = block_my_course_progress_get_completion_percentage((int)$course->id);
 
 					// RENDER THE COURSE PROGRESS
 					$html .= $this->progress($percentage);
