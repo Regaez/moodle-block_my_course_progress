@@ -16,14 +16,9 @@ $string['my_course_progress:addinstance'] = 'Add a new course progress block';
 $string['my_course_progress:myaddinstance'] = 'Add a new course progress block to Dashboard';
 
 //settings strings
-$string['linkcourseheading'] = 'Link Course Title';
-$string['linkcourseheading_desc'] = 'Turn the course title into a link to the course';
-$string['addgotocourselink'] = 'Add \'Go to course\' link';
-$string['addgotocourselink_desc'] = 'Adds a link to the course underneath each description';
+$string['hideblockheader'] = 'Hide Block Header';
+$string['hideblockheader_desc'] = 'This will enable/disable the block header';
 
 //renderer strings
-$string['hiddencoursecount'] = 'You have {$a} hidden course';
-$string['hiddencoursecountplural'] = 'You have {$a} hidden courses';
-$string['gotocourse'] = 'Go to course';
 $string['completion_label'] = 'Completion:';
 $string['completion_finished_label'] = 'Completed';

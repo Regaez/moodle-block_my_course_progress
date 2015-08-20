@@ -76,7 +76,8 @@ class block_my_course_progress extends block_base {
      * @return bool if true then header will be visible.
      */
     public function hide_header() {
-        return false;
+        $config = get_config('block_my_course_progress');
+        return !!$config->hideblockheader;
     }
 
     /**

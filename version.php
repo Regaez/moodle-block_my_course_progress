@@ -11,6 +11,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015070209;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2015082000;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2014050800;        // Requires this Moodle version
 $plugin->component = 'block_my_course_progress'; // Full name of the plugin (used for diagnostics)
